@@ -264,16 +264,21 @@ export default function ApplicationsPage() {
                         )}
                       </td>
                       <td>
-                        {needsAction && (
-                          <button
-                            type="button"
-                            className="btn btn--ghost btn--sm"
-                            aria-expanded={isExpanded}
-                            onClick={() => setExpandedId(isExpanded ? null : app.id)}
-                          >
-                            {isExpanded ? 'Hide apply link' : 'Apply link'}
-                          </button>
-                        )}
+                        <div className="flex items-center justify-end gap-2">
+                          <Link to={`/prep-guide/${app.id}`} className="btn btn--ghost btn--sm">
+                            Prep guide
+                          </Link>
+                          {needsAction && (
+                            <button
+                              type="button"
+                              className="btn btn--ghost btn--sm"
+                              aria-expanded={isExpanded}
+                              onClick={() => setExpandedId(isExpanded ? null : app.id)}
+                            >
+                              {isExpanded ? 'Hide apply link' : 'Apply link'}
+                            </button>
+                          )}
+                        </div>
                       </td>
                     </tr>
                     {needsAction && isExpanded && (

@@ -121,6 +121,17 @@ describe('ApplicationsPage', () => {
     expect(applyButton).toHaveAttribute('aria-expanded', 'true')
   })
 
+  it('links each row to its own prep guide by application id', async () => {
+    renderPage()
+    await screen.findByText('Acme')
+
+    const prepGuideLinks = screen.getAllByRole('link', { name: /prep guide/i })
+    expect(prepGuideLinks).toHaveLength(ROWS.length)
+    expect(prepGuideLinks.map((link) => link.getAttribute('href'))).toEqual(
+      ROWS.map((row) => `/prep-guide/${row.id}`),
+    )
+  })
+
   it('shows the empty state when there are no applications', async () => {
     getApplications.mockResolvedValue([])
     renderPage()

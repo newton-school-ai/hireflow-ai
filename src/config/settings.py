@@ -35,7 +35,11 @@ class Settings(BaseSettings):
 
     # Groq (free tier — recommended for students)
     GROQ_API_KEY: Optional[str] = None
-    GROQ_MODEL: str = "llama-3.1-8b-instant"
+    # Groq has decommissioned its Llama 3.x chat models (llama-3.1-8b-instant,
+    # then llama3-8b-8192, both now 400 with "model_decommissioned"). Verified
+    # live against Groq's /models endpoint and a real chat completion as of
+    # 2026-09: check https://console.groq.com/docs/models if this drifts again.
+    GROQ_MODEL: str = "openai/gpt-oss-20b"
 
     # Google Gemini (free tier)
     GEMINI_API_KEY: Optional[str] = None
