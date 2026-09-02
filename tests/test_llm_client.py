@@ -12,7 +12,7 @@ def _settings(provider: str, **overrides):
     base = {
         "LLM_PROVIDER": provider,
         "GROQ_API_KEY": None,
-        "GROQ_MODEL": "llama-3.1-8b-instant",
+        "GROQ_MODEL": "openai/gpt-oss-20b",
         "GEMINI_API_KEY": None,
         "GOOGLE_API_KEY": None,
         "GEMINI_MODEL": "gemini-1.5-flash",

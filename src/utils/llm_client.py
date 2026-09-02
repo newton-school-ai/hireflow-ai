@@ -174,7 +174,7 @@ class GroqClient(BaseLLMClient):
             ) from exc
 
         self._client = Groq(api_key=api_key)
-        self._model = getattr(settings, "GROQ_MODEL", "llama-3.1-8b-instant")
+        self._model = getattr(settings, "GROQ_MODEL", "openai/gpt-oss-20b")
 
     def chat(self, prompt: str) -> str:
         response = self._client.chat.completions.create(

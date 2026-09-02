@@ -9,7 +9,6 @@ const NAV = [
   { label: 'Profile', to: '/profile', end: true },
   { label: 'Weekly Plan', to: '/weekly-plan' },
   { label: 'Applications', to: '/applications' },
-  { label: 'Prep Guide', to: '/prep-guide/1' },
   { label: 'Resumes', to: '/resumes' },
 ]
 

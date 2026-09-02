@@ -53,11 +53,15 @@ describe('App routing (acceptance criteria: all 5 routes)', () => {
     expect(screen.getByRole('heading', { name: /resume library/i })).toBeInTheDocument()
   })
 
-  it('shows nav links for all five routes', () => {
+  it('shows nav links for every route with a stable entry point', () => {
     renderAt('/')
     const nav = screen.getByRole('navigation', { name: /primary/i })
 
-    for (const label of ['Profile', 'Weekly Plan', 'Applications', 'Prep Guide', 'Resumes']) {
+    // Prep Guide has no top-level entry point — it's keyed by application id
+    // and reached via a "Prep guide" link on each row of the Applications
+    // table (a bare nav link would otherwise point at a hardcoded, usually
+    // wrong, id).
+    for (const label of ['Profile', 'Weekly Plan', 'Applications', 'Resumes']) {
       expect(within(nav).getByRole('link', { name: new RegExp(label, 'i') })).toBeInTheDocument()
     }
   })
